@@ -7,12 +7,17 @@ from PyQt4.QtCore import *
  
 class MyWidget(QWidget):
     def mousePressEvent(self, event):   
-        print self.panel.width()
-        print event.x()
-        print len(self.panel.list_of_files)
         x = 1.0 * event.x() / self.panel.width() * len(self.panel.list_of_files)
-        print x
         self.panel.update(int(x))
+    def mouseMoveEvent(self, event):
+        if event.buttons() == Qt.NoButton:
+            print "Simple mouse motion"
+        elif event.buttons() == Qt.LeftButton:
+            x = 1.0 * event.x() / self.panel.width() * len(self.panel.list_of_files)
+            self.panel.update(int(x))
+        elif event.buttons() == Qt.RightButton:
+            print "Right click drag"
+    
     def setPanel(self, panelWidget):
         self.panel = panelWidget;
         
