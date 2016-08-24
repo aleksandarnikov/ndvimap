@@ -17,11 +17,10 @@ class MyWidget(QWidget):
             self.panel.update(int(x))
         elif event.buttons() == Qt.RightButton:
             print "Right click drag"
-    
     def setPanel(self, panelWidget):
         self.panel = panelWidget;
         
- 
+
 class PanelWidget(QWidget):
     firstcall = 1;
     def __init__(self, list_of_files):
